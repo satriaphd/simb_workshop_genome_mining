@@ -71,6 +71,9 @@ RUN wget https://s3.amazonaws.com/share.jgi-ga.org/satria/gtdbtk.2.1.1.zip -P /b
 	&& cd GTDBTk-2.1.1\
 	&& pip install .
 
+# downgrade numpy to v1.23, as GTDBTK breaks on v1.24
+RUN pip install numpy==1.23
+
 ENV GTDBTK_DATA_PATH="/data/gtdb_ref/release207_v2"
 
 ENTRYPOINT bash
